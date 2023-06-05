@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
-const Formulario = () => {
+const Formulario = ({ consultarAPI }) => {
   const [ciudad, setCiudad] = useState("");
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(ciudad);
+    consultarAPI(ciudad);
   };
-
+  
   const handleChange = (e) => {
     setCiudad(e.target.value);
   };
+
   return (
-    <Form className="text-light text-center">
+    <Form className="text-light text-center" onSubmit={handleSubmit}>
       <Form.Group
         className="mb-3 d-flex flex-column align-items-center px-5"
         controlId="inputCiudad"
@@ -27,7 +29,7 @@ const Formulario = () => {
           onChange={handleChange}
         />
       </Form.Group>
-      <Button variant="primary" type="submit" className="px-5 py-2 fs-4" onClick={handleSubmit}>
+      <Button variant="primary" type="submit" className="px-5 py-2 fs-4">
         Buscar
       </Button>
     </Form>
