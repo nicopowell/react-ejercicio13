@@ -33,9 +33,10 @@ function App() {
       <h1 className="text-light display-4 text-center mt-4">Web del clima</h1>
       <hr className="text-light" />
       <Formulario onSubmit={handleSubmit} consultarAPI={consultarAPI}></Formulario>
-      {resultadosCargados && climaResultados.cod === 200 ? (
+      {resultadosCargados && climaResultados.cod === 200 && (
         <Tarjeta climaResultados={climaResultados}></Tarjeta>
-      ) : (
+      )}
+      {resultadosCargados && climaResultados.cod !== 200 && (
         <Alert variant="danger" className="mt-5">
           No se encontraron datos de la ciudad ingresada
         </Alert>
